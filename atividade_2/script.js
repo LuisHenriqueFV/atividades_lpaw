@@ -22,7 +22,7 @@ document.getElementById('start-btn').addEventListener('click', function() {
     document.querySelector('.game-description').style.display = 'none';
     document.getElementById('start-btn').style.display = 'none';
     document.getElementById('gameCanvas').style.display = 'block';
-    
+
     // Animação de fade in no canvas
     anime({
         targets: '#gameCanvas',
@@ -30,7 +30,7 @@ document.getElementById('start-btn').addEventListener('click', function() {
         duration: 1000,
         easing: 'easeInOutQuad'
     });
-    
+
     // Chama a função para inicializar o jogo no canvas
     initGame();
 });
@@ -39,10 +39,11 @@ document.getElementById('start-btn').addEventListener('click', function() {
 function initGame() {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
-
-    // Configurações iniciais do jogo no Canvas (placeholder)
-    ctx.fillStyle = "#ff6b6b";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // Aqui será inserida a lógica do jogo
+    // Ajusta o tamanho do canvas para ocupar toda a área disponível
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - 100; // Ajuste conforme necessário para o layout
+
+  
+
 }
