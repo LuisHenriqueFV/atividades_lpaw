@@ -1,49 +1,37 @@
-// Animação com AnimeJS para o título e botão
-anime({
-    targets: '.game-title',
-    translateY: [-50, 0],
-    opacity: [0, 1],
-    duration: 1500,
-    easing: 'easeOutBounce'
-});
+window.onload = function() {
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
 
-anime({
-    targets: '.start-button',
-    scale: [0.8, 1],
-    opacity: [0, 1],
-    duration: 1000,
-    delay: 500,
-    easing: 'easeOutElastic(1, .8)'
-});
+    // Ajusta o tamanho do canvas para ocupar toda a área disponível
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - 100;
 
-// Evento de clique para iniciar o jogo
-document.getElementById('start-btn').addEventListener('click', function() {
-    // Oculta o botão e a descrição, mostra o canvas
-    document.querySelector('.game-description').style.display = 'none';
-    document.getElementById('start-btn').style.display = 'none';
-    document.getElementById('gameCanvas').style.display = 'block';
+    // Exibe a imagem logo.png no canvas ao carregar a página
+    const backgroundImage = new Image();
+    backgroundImage.src = '../atividade_2/logo.png'
 
-    // Animação de fade in no canvas
-    anime({
-        targets: '#gameCanvas',
-        opacity: [0, 1],
-        duration: 1000,
-        easing: 'easeInOutQuad'
+    // Quando a imagem carregar, desenha-a no canvas
+    backgroundImage.onload = function() {
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+    };
+
+    // Evento de clique para o botão "Iniciar Jogo"
+    document.getElementById('start-btn').addEventListener('click', function() {
+        // Limpa o canvas e substitui o conteúdo
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Exibe o novo conteúdo no canvas (aqui você pode inserir a lógica do jogo)
+        initGame(); // Sua lógica de jogo vai aqui
     });
+};
 
-    // Chama a função para inicializar o jogo no canvas
-    initGame();
-});
-
-// Função de inicialização do jogo no Canvas
 function initGame() {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     
-    // Ajusta o tamanho do canvas para ocupar toda a área disponível
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight - 100; // Ajuste conforme necessário para o layout
+    // Desenhe algo novo no canvas quando o jogo começar (substitua isso com sua lógica)
+    // ctx.fillStyle = "#ff6b6b";
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  
-
+    // Outras lógicas do jogo podem ser adicionadas aqui
 }
